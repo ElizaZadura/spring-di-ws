@@ -1,12 +1,12 @@
 package App;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import util.ScannerInputService;
-import util.UserInputService;
 
 public class Main {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context =
-                new AnnotationConfigApplicationContext(config.ComponentScanConfig.class);
+                new AnnotationConfigApplicationContext(App.config.ComponentScanConfig.class);
 
         ScannerInputService scannerInputService = context.getBean(ScannerInputService.class);
         System.out.println("Enter a string:");
