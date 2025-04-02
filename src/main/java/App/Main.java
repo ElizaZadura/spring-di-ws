@@ -1,13 +1,22 @@
 package App;
-import App.Config.ComponentScanConfig;
-import data_access.StudentDao;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import util.ScannerInputService;
+import util.UserInputService;
 
 public class Main {
     public static void main(String[] args) {
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(config.ComponentScanConfig.class);
 
-AnnotationConfigApplicationContext context =
-                new AnnotationConfigApplicationContext(ComponentScanConfig.class);
-        StudentDao studentDao = context.getBean(StudentDao.class);
+        ScannerInputService scannerInputService = context.getBean(ScannerInputService.class);
+        System.out.println("Enter a string:");
+        String inputString = scannerInputService.getString();
+        System.out.println("You entered: " + inputString);
+
+        System.out.println("Enter an integer:");
+        int inputInt = scannerInputService.getInt();
+        System.out.println("You entered: " + inputInt);
+
+        context.close();
     }
 }
